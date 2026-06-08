@@ -2,6 +2,7 @@
 FROM node:22-alpine AS web
 WORKDIR /web
 COPY web/package*.json ./
+ENV NODE_ENV=development
 RUN npm install
 COPY web/ ./
 RUN npm run build
