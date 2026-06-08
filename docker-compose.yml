@@ -1,0 +1,24 @@
+# Despliegue en Coolify (o docker compose local).
+# El volumen flowdeck-data:/data persiste la cuenta de admin y las instancias.
+services:
+  flowdeck:
+    build: .
+    container_name: flowdeck
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+    environment:
+      - PORT=8080
+      - DATA_DIR=/data
+      # Recomendado en producción: definí estos secretos (o dejalos y se generan
+      # solos y se guardan en el volumen).
+      - JWT_SECRET=${JWT_SECRET:-}
+      - APP_SECRET=${APP_SECRET:-}
+      # Opcional: crear admin sin pasar por la pantalla de setup.
+      - ADMIN_USERNAME=${ADMIN_USERNAME:-}
+      - ADMIN_PASSWORD=${ADMIN_PASSWORD:-}
+    volumes:
+      - flowdeck-data:/data
+
+volumes:
+  flowdeck-data:

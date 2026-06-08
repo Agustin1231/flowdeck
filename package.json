@@ -1,0 +1,21 @@
+{
+  "name": "flowdeck-server",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "FlowDeck — multi-instance n8n manager (PWA + API proxy)",
+  "scripts": {
+    "start": "node server/index.js",
+    "dev": "node --watch server/index.js",
+    "build:web": "cd web && npm run build",
+    "install:web": "cd web && npm install"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "cookie-parser": "^1.4.7",
+    "express": "^4.21.2",
+    "jsonwebtoken": "^9.0.2"
+  }
+}
